@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parcel Tracking</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f1f5fb;color:#17345b}
+header{background:#12325a;color:white;padding:22px;text-align:center}
+header h1{margin:0}
+.container{max-width:700px;margin:25px auto;padding:15px}
+.card{background:white;padding:22px;border-radius:14px;box-shadow:0 4px 16px #0001;margin-bottom:20px}
+input,button{width:100%;padding:14px;margin-top:10px;border-radius:8px;font-size:16px}
+input{border:1px solid #ccd8e8}
+button{background:#0878ef;color:white;border:0;font-weight:bold;cursor:pointer}
+.status{background:#e3f8eb;color:#087a43;padding:12px;border-radius:8px;font-weight:bold}
+.hidden{display:none}
+p{line-height:1.6;overflow-wrap:anywhere}
+.delivery{text-align:center;background:#eaf5ff;padding:15px;border-radius:10px;margin-top:15px}
+footer{text-align:center;background:#12325a;color:white;padding:20px}
+</style>
+</head>
+
+<body>
+<header>
+  <h1>📦 Parcel Track</h1>
+  <p>Apna Parcel Track Karein</p>
+</header>
+
+<div class="container">
+  <div class="card">
+    <h2>Tracking ID Daalein</h2>
+    <form id="trackForm">
+      <input id="trackingId" placeholder="Tracking ID likhein" required>
+      <button type="submit">🔍 Track Parcel</button>
+    </form>
+    <p id="error" style="color:red"></p>
+  </div>
+
+  <div class="card hidden" id="result">
+    <div class="status">✅ Parcel Booked (Demo Status)</div>
+    <h3>Tracking ID: BG20261016001</h3>
+
+    <h3>👤 Customer Details</h3>
+    <p><b>Name:</b> Srikrishna Maity</p>
+    <p><b>Village:</b> Dakshin Srikrishna Pur</p>
+    <p><b>P.O.:</b> Dakshin Srikrishna Pur</p>
+    <p><b>Landmark:</b> Puiada Tel Pump</p>
+    <p><b>Road:</b> Haldia-Mecheda</p>
+    <p><b>PIN:</b> 721648</p>
+    <p><b>Phone:</b> 8972965865</p>
+
+    <hr>
+    <h3>🚚 Parcel Status</h3>
+    <p>🟢 Booked — Demo booking</p>
+    <p>⚪ Picked Up — Pending</p>
+    <p>⚪ In Transit — Pending</p>
+    <p>⚪ Out for Delivery — Pending</p>
+    <p>⚪ Delivered — Pending</p>
+
+    <div class="delivery">
+      <h3>📅 Expected Delivery</h3>
+      <h2>16 October 2026</h2>
+      <h3>2:00 PM – 3:00 PM</h3>
+      <p>Yeh demo estimate hai, confirmed delivery nahi.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Parcel Track | Customer Tracking Portal
+</footer>
+
+<script>
+document.getElementById("trackForm").addEventListener("submit",function(e){
+  e.preventDefault();
+
+  const id=document.getElementById("trackingId").value.trim().toUpperCase();
+  const result=document.getElementById("result");
+  const error=document.getElementById("error");
+
+  if(id==="BG20261016001"){
+    error.textContent="";
+    result.classList.remove("hidden");
+    result.scrollIntoView({behavior:"smooth"});
+  }else{
+    result.classList.add("hidden");
+    error.textContent="Invalid Tracking ID! Demo ID: BG20261016001";
+  }
+});
+</script>
+</body>
+</html>
